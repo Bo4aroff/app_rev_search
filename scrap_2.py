@@ -100,10 +100,10 @@ fig_date = px.bar(df_selection,
 st.plotly_chart(fig_date)
 
 
-if st.checkbox('Предпросмотр'):
+if st.checkbox('Сформировать файл для скачивания'):
 
     df_2 = st.dataframe(df_selection)
-if st.checkbox('Показать файл для скачивания'):
+if st.checkbox('Скачать файл Excel'):
 
     st.subheader('СКАЧАТЬ ФАЙЛ')
     generate_excel_download_link(df_2)
