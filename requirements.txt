@@ -5,3 +5,4 @@ app-store-scraper==0.3.5
 uuid==1.30
 plotly-express==0.4.1
 numpy==1.21.6
+base64io==1.0.3
