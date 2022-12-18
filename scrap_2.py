@@ -1,0 +1,107 @@
+from app_store_scraper import AppStore
+import uuid
+import pandas as pd
+import numpy as np
+import plotly.express as px
+
+def generate_excel_download_link(df_2):
+    # Credit Excel: https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/5
+    towrite = BytesIO()
+    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    towrite.seek(0)  # reset pointer
+    b64 = base64.b64encode(towrite.read()).decode()
+    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="data_download.xlsx">Download Excel File</a>'
+    return st.markdown(href, unsafe_allow_html=True)
+
+
+a_reviews = AppStore('ru', 'smartmed', '1348775741')
+a_reviews.review()
+
+
+a_df = pd.DataFrame(np.array(a_reviews.reviews), columns=['review'])
+a_df2 = a_df.join(pd.DataFrame(a_df.pop('review').tolist()))
+
+a_df2.drop(columns={'isEdited'},inplace = True)
+a_df2.insert(loc=0, column='source', value='App Store')
+a_df2['developer_response_date'] = None
+a_df2['thumbs_up'] = None
+a_df2.insert(loc=1, column='review_id', value=[uuid.uuid4() for _ in range(len(a_df2.index))])
+a_df2.rename(columns= {'review': 'review_description','userName': 'user_name', 'date': 'review_date','title': 'review_title', 'developerResponse': 'developer_response'},inplace = True)
+a_df2 = a_df2.where(pd.notnull(a_df2), None)
+
+a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('D')
+a_df2['month'] = a_df2['date'].dt.month
+a_df2['year'] = a_df2['date'].dt.year
+a_df2.loc[a_df2['rating'] < 4, 'рейтинг'] = 'Отрицательный'
+a_df2.loc[a_df2['rating'] >= 4, 'рейтинг'] = 'Положительный'
+a_df2.loc[a_df2['rating'] > 0, 'value'] = 1
+
+
+
+import streamlit as st
+
+
+
+st.set_page_config(page_title='Отзывы_IOS', layout='wide')
+
+
+year_options = a_df2['year'].unique().tolist()
+
+st.sidebar.header('Фильтры:')
+
+# year_ = st.sidebar.multiselect("Год", options=a_df2['year'].unique(), default=a_df2['year'].unique())
+year_ = st.selectbox('ВЫБИРИТЕ ГОД', year_options, 0)
+month_ = st.sidebar.multiselect("Месяц", options=a_df2['month'].unique(), default=a_df2['month'].unique())
+raiting = st.sidebar.multiselect("Рейтинг", options=a_df2['рейтинг'].unique(), default=a_df2['рейтинг'].unique())
+# raiting_ = st.sidebar.multiselect("Оценка", options=a_df2['rating'].unique(), default=a_df2['rating'].unique())
+
+# month_ = st.slider("Month", max_value=max(a_df2['month'].unique().tolist()), min_value=min(a_df2['month'].unique().tolist()), value=(max(a_df2['month'].unique().tolist()), min(a_df2['month'].unique().tolist())))
+df_selection = a_df2.query("рейтинг == @raiting & year == @year_ & month == @month_")
+
+st.title(":bar_chart: Основные показатели")
+st.markdown('##')
+
+average_raiting = round(df_selection['rating'].mean(), 1)
+star_raiting = ":star:" * int(round(average_raiting, 0))
+
+
+st.subheader("Средний Рейтинг:")
+st.subheader(f"{average_raiting} {star_raiting}")
+
+st.markdown("---")
+
+
+rating_by_value = (df_selection.groupby(by=['рейтинг']).sum()[['value']].sort_values(by="value"))
+fig_rating = px.bar(rating_by_value,
+                    x="value",
+                    y=rating_by_value.index,
+                    orientation="h",
+                    title="<b>Рейтинги</b>",
+                    color_discrete_sequence=["#0083B8"] * len(rating_by_value),
+                    template="plotly_white",
+                    )
+
+st.plotly_chart(fig_rating)
+
+st.markdown("---")
+
+# date_by_value = (df_selection.groupby(by=['date']).sum()[['value']].sort_values(by='date'))
+fig_date = px.bar(df_selection,
+                  x="date",
+                  y="value",
+                  orientation="v",
+                  title="<b></b>",
+                  color_discrete_sequence=["#0083B8"] * len('value'),
+                  template="plotly_white",
+                  )
+
+st.plotly_chart(fig_date)
+
+
+if st.checkbox('Предпросмотр'):
+
+    df_2 = st.dataframe(df_selection)
+if st.checkbox('Показать файл для скачивания'):
+
+    st.subheader('СКАЧАТЬ ФАЙЛ')
+    generate_excel_download_link(df_2)
