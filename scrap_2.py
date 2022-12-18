@@ -92,7 +92,7 @@ fig_date = px.bar(df_selection,
                   x="date",
                   y="value",
                   orientation="v",
-                  title="<b></b>",
+                  title="<b>Комментарии по датам</b>",
                   color_discrete_sequence=["#0083B8"] * len('value'),
                   template="plotly_white",
                   )
@@ -105,5 +105,5 @@ if st.checkbox('Сформировать файл для скачивания'):
     df_2 = st.dataframe(df_selection)
 if st.checkbox('Скачать файл Excel'):
 
-    st.subheader('СКАЧАТЬ ФАЙЛ')
+    st.subheader('ССЫЛКА ДЛЯ СКАЧИВАНИЯ')
     generate_excel_download_link(df_2)
