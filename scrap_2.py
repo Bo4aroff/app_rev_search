@@ -31,9 +31,7 @@ a_df2.insert(loc=1, column='review_id', value=[uuid.uuid4() for _ in range(len(a
 a_df2.rename(columns= {'review': 'review_description','userName': 'user_name', 'date': 'review_date','title': 'review_title', 'developerResponse': 'developer_response'},inplace = True)
 a_df2 = a_df2.where(pd.notnull(a_df2), None)
 
-# a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('D')
-a_df2['date'] = pd.to_datetime(a_df2['review_date'])
-a_df2['date'] = a_df2['date'].dt.date
+a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('D')
 a_df2['month'] = a_df2['date'].dt.month
 a_df2['year'] = a_df2['date'].dt.year
 a_df2.loc[a_df2['rating'] < 4, 'рейтинг'] = 'Отрицательный'
