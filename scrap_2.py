@@ -91,6 +91,7 @@ fig_rating = px.bar(rating_by_value,
                     title="<b>Оценки</b>",
                     color_discrete_sequence=["#0083B8"] * len(rating_by_value),
                     template="plotly_white",
+                    color="рейтинг",
                     )
 
 st.plotly_chart(fig_rating)
@@ -112,6 +113,7 @@ st.plotly_chart(fig_date)
 fig_new = px.bar(df_selection,
                  x="рейтинг",
                  y="value",
+                 title="<b>Динамика по дням</b>",
                  color="рейтинг",
                  animation_frame="day",
                  animation_group="рейтинг",
