@@ -37,9 +37,12 @@ a_df2['review_date'] = a_df2['review_date'].dt.strftime('%m/%d/%Y')
 a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('d')
 
 a_df2['year'] = a_df2['date'].dt.year
-a_df2.sort_values(by='year')
+
 a_df2['month'] = a_df2['date'].dt.month
 a_df2.sort_values(by='month', inplace=True)
+
+a_df2['day'] = a_df2['date'].dt.day
+a_df2.sort_values(by='day', inplace=True)
 
 a_df2.loc[a_df2['rating'] < 4, 'рейтинг'] = 'Отрицательный'
 a_df2.loc[a_df2['rating'] >= 4, 'рейтинг'] = 'Положительный'
@@ -110,7 +113,7 @@ fig_new = px.bar(df_selection,
                  x="рейтинг",
                  y="value",
                  color="рейтинг",
-                 animation_frame="month",
+                 animation_frame="day",
                  animation_group="рейтинг",
                 )
 fig_new.update_layout(width=800)
