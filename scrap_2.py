@@ -31,6 +31,9 @@ a_df2.insert(loc=1, column='review_id', value=[uuid.uuid4() for _ in range(len(a
 a_df2.rename(columns= {'review': 'review_description','userName': 'user_name', 'date': 'review_date','title': 'review_title', 'developerResponse': 'developer_response'},inplace = True)
 a_df2 = a_df2.where(pd.notnull(a_df2), None)
 
+
+
+a_df2['review_date'] = pd.to_datetime(a_df2['review_date'])
 a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('D')
 a_df2['month'] = a_df2['date'].dt.month
 a_df2['year'] = a_df2['date'].dt.year
@@ -103,7 +106,7 @@ fig_new = px.bar(df_selection,
                  x="рейтинг",
                  y="value",
                  color="рейтинг",
-                 animation_frame="date",
+                 animation_frame="month",
                  animation_group="рейтинг",
                 )
 fig_new.update_layout(width=800)
