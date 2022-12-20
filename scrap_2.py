@@ -106,7 +106,7 @@ fig_new = px.bar(df_selection,
                  x="рейтинг",
                  y="value",
                  color="рейтинг",
-                 animation_frame="month",
+                 animation_frame="review_date",
                  animation_group="рейтинг",
                 )
 fig_new.update_layout(width=800)
