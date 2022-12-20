@@ -32,7 +32,7 @@ a_df2.rename(columns= {'review': 'review_description','userName': 'user_name', '
 a_df2 = a_df2.where(pd.notnull(a_df2), None)
 
 # a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('D')
-a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.normalize()
+a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.date
 a_df2['month'] = a_df2['date'].dt.month
 a_df2['year'] = a_df2['date'].dt.year
 a_df2.loc[a_df2['rating'] < 4, 'рейтинг'] = 'Отрицательный'
