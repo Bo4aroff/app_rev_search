@@ -100,7 +100,7 @@ fig_date = px.bar(df_selection,
 st.plotly_chart(fig_date)
 
 fig_new = px.bar(df_selection,
-                 x="month",
+                 x="рейтинг",
                  y="value",
                  color="рейтинг",
                  animation_frame="year",
