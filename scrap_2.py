@@ -99,6 +99,16 @@ fig_date = px.bar(df_selection,
 
 st.plotly_chart(fig_date)
 
+fig_new = px.bar(df_selection,
+                 x='month',
+                 y='value',
+                 color='рейтинг',
+                 range_y=[0,35000],
+                 animation_frame='month',
+                 animation_group='рейтинг',
+                )
+fig_new.update_layout(width=800)
+st.write(fig_new)
 
 if st.checkbox('Сформировать файл для скачивания'):
 
