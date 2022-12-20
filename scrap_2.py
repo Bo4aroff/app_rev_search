@@ -35,7 +35,6 @@ a_df2 = a_df2.where(pd.notnull(a_df2), None)
 
 a_df2['review_date'] = a_df2['review_date'].dt.strftime('%m/%d/%Y')
 a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('d')
-a_df2['date'] = a_df2['date'].dt.strftime('%m/%d/%Y')
 a_df2['month'] = a_df2['date'].dt.month
 a_df2['year'] = a_df2['date'].dt.year
 a_df2.loc[a_df2['rating'] < 4, 'рейтинг'] = 'Отрицательный'
@@ -107,7 +106,7 @@ fig_new = px.bar(df_selection,
                  x="рейтинг",
                  y="value",
                  color="рейтинг",
-                 animation_frame="date",
+                 animation_frame="month",
                  animation_group="рейтинг",
                 )
 fig_new.update_layout(width=800)
