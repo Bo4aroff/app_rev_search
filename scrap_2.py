@@ -39,7 +39,7 @@ a_df2['date'] = pd.to_datetime(a_df2['review_date']).dt.floor('d')
 a_df2['year'] = a_df2['date'].dt.year
 
 a_df2['month'] = a_df2['date'].dt.month
-a_df2.sort_values(by='month', inplace=True)
+a_df2.sort_values(by='review_date', inplace=True)
 
 a_df2['day'] = a_df2['date'].dt.day
 a_df2.sort_values(by='day', inplace=True)
@@ -114,7 +114,7 @@ fig_new = px.bar(df_selection,
                  y="value",
                  title="<b>Динамика по дням</b>",
                  color="рейтинг",
-                 animation_frame="day",
+                 animation_frame="review_date",
                  animation_group="рейтинг",
                 )
 fig_new.update_layout(width=800)
