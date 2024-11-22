@@ -1,8 +1,8 @@
-pandas==2.2.3
-streamlit==1.40.1
-openpyxl==3.1.5
-app-store-scraper==0.3.5
-google-play-scraper==1.2.7
-uuid==1.30
-plotly-express==0.4.1
-numpy==2.1.3
+pandas
+streamlit
+openpyxl
+app-store-scraper
+google-play-scraper
+uuid
+plotly-express
+numpy
