@@ -147,16 +147,16 @@ st.plotly_chart(fig_date)
 
 
 
-# fig_new = px.bar(df_selection,
-#                  x="рейтинг",
-#                  y="value",
-#                  title="<b>Динамика по дням</b>",
-#                  color="рейтинг",
-#                  animation_frame="review_date",
-#                  animation_group="рейтинг",
-#                 )
-# fig_new.update_layout(width=800)
-# st.write(fig_new)
+fig_new = px.bar(df_selection,
+                 x="рейтинг",
+                 y="value",
+                 title="<b>Динамика по дням</b>",
+                 color="рейтинг",
+                 animation_frame="review_date",
+                 animation_group="рейтинг",
+                )
+fig_new.update_layout(width=800)
+st.write(fig_new)
 
 if st.checkbox('Сформировать файл для скачивания'):
 
