@@ -6,4 +6,3 @@ google-play-scraper==1.2.2
 plotly-express==0.4.1
 numpy
 uuid==1.30
-pillow==9.5.0
