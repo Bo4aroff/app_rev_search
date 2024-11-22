@@ -131,7 +131,7 @@ fig_date = px.bar(df_selection,
                   y="value",
                   orientation="v",
                   title="<b>Комментарии_(количество) по датам</b>",
-                  color_discrete_sequence=["#0083B8"] * len('value'),
+                  color_discrete_sequence=["#EC0C39"] * len('value'),
                   template="plotly_white",
                   )
 
