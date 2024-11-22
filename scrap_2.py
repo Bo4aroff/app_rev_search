@@ -7,7 +7,6 @@ import plotly.express as px
 import base64
 from io import StringIO, BytesIO
 
-
 def generate_excel_download_link(df_2):
     # Credit Excel: https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/5
     towrite = BytesIO()
