@@ -106,6 +106,7 @@ fig_rating = px.bar(df_selection,
                     y='source',
                     orientation="h",
                     title="<b>Оценки</b>",
+                    color_discrete_sequence=["red", "green"],
                     color='рейтинг',
                     )
 
