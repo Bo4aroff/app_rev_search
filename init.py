@@ -107,6 +107,7 @@ fig_rating = px.bar(df_selection,
                     orientation="h",
                     title="<b>Оценки</b>",
                     color_discrete_sequence=["green", "red"],
+                    hover_name="рейтинг"
                     color='рейтинг',
                     )
 
