@@ -106,8 +106,9 @@ fig_rating = px.bar(df_selection,
                     y='source',
                     orientation="h",
                     title="<b>Оценки</b>",
-                    color_discrete_sequence=["red", "green"],
-                    hover_name="рейтинг",
+                    color_discrete_map={
+                "Отрицательный": "red",
+                "Положительный": "green",},
                     color='рейтинг',
                     )
 
@@ -119,8 +120,9 @@ fig_month = px.bar(df_selection,
                   y="value",
                   orientation="v",
                   title="<b>Рейтинг за месяц</b>",
-                  color_discrete_sequence=["red", "green"],
-                  hover_name="рейтинг",
+                  color_discrete_map={
+                "Отрицательный": "red",
+                "Положительный": "green",},
                   color="рейтинг",
                   )
 
@@ -135,8 +137,9 @@ fig_date = px.bar(df_selection,
                   y="value",
                   orientation="v",
                   title="<b>Комментарии_(количество) по датам</b>",
-                  color_discrete_sequence=["red", "green"],
-                  hover_name="рейтинг",
+                  color_discrete_map={
+                "Отрицательный": "red",
+                "Положительный": "green",},
                   color="рейтинг",
                   template="plotly_white",
                   )
