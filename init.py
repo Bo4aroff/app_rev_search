@@ -78,7 +78,7 @@ month_options = a_df2['month'].unique().tolist()
 st.sidebar.header('Фильтры:')
 
 year_ = st.sidebar.multiselect("Год", options=a_df2['year'].unique(), default=a_df2['year'].unique())
-year2 = st.slider("Год", max_value=max(a_df2['year'].unique().tolist()), min_value=min(a_df2['year'].unique().tolist()), value=(max(a_df2['year'].unique().tolist(), min(a_df2['year'].unique().tolist()))))
+# year2 = st.slider("Год", max_value=max(a_df2['year'].unique().tolist()), min_value=min(a_df2['year'].unique().tolist()), value=(max(a_df2['year'].unique().tolist(), min(a_df2['year'].unique().tolist()))))
 # year_ = st.selectbox('ВЫБИРИТЕ ГОД', year_options, 0)
 market = st.sidebar.multiselect("Ресурс", options=a_df2['source'].unique(), default=a_df2['source'].unique())
 month_ = st.sidebar.multiselect("Месяц", options=a_df2['month'].unique(), default=a_df2['month'].unique())
