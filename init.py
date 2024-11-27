@@ -82,8 +82,8 @@ year_ = st.sidebar.multiselect("Год", options=a_df2['year'].unique(), default
 # year2 = st.slider("ГОД", max_value=max(a_df2['year'].unique().tolist()), min_value=min(a_df2['year'].unique().tolist()), value=(max(a_df2['year'].unique().tolist()), min(a_df2['year'].unique().tolist())))
 # year_ = st.selectbox('ВЫБИРИТЕ ГОД', year_options, 0)
 market = st.sidebar.multiselect("Ресурс", options=a_df2['source'].unique(), default=a_df2['source'].unique())
-month_ = st.slider("Month", max_value=max(a_df2['month'].unique().tolist()), min_value=min(a_df2['month'].unique().tolist()), value=(max(a_df2['month'].unique().tolist()), min(a_df2['month'].unique().tolist())))
-# month_ = st.sidebar.multiselect("Месяц", options=a_df2['month'].unique(), default=a_df2['month'].unique())
+# month_ = st.slider("Month", max_value=max(a_df2['month'].unique().tolist()), min_value=min(a_df2['month'].unique().tolist()), value=(max(a_df2['month'].unique().tolist()), min(a_df2['month'].unique().tolist())))
+month_ = st.sidebar.multiselect("Месяц", options=a_df2['month'].unique(), default=a_df2['month'].unique())
 raiting = st.sidebar.multiselect("Рейтинг", options=a_df2['рейтинг'].unique(), default=a_df2['рейтинг'].unique())
 
 
