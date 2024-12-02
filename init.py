@@ -138,7 +138,7 @@ st.markdown("---")
 fig_date = px.line(df_selection,
                   x="date",
                   y="value",
-                  orientation="v",
+                  # orientation="v",
                   title="<b>Комментарии_(количество) по датам</b>",
                   color_discrete_map={
                 "Отрицательный": "red",
