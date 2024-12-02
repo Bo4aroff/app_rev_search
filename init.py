@@ -118,7 +118,7 @@ fig_rating = px.bar(df_selection,
 st.plotly_chart(fig_rating)
 
 
-fig_month = px.bar(df_selection,
+fig_month = px.line(df_selection,
                   x="month",
                   y="value",
                   orientation="v",
