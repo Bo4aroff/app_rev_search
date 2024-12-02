@@ -144,7 +144,7 @@ fig_date = px.bar(df_selection,
                 "Отрицательный": "red",
                 "Положительный": "green",},
                   color="рейтинг",
-                  # template="plotly_white",
+                  # template="plotly_white", 
                   )
 
 
