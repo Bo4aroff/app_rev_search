@@ -135,7 +135,7 @@ st.plotly_chart(fig_month)
 st.markdown("---")
 
 # date_by_value = (df_selection.groupby(by=['date']).sum()[['value']].sort_values(by='date'))
-fig_date = px.bar(df_selection,
+fig_date = px.line(df_selection,
                   x="date",
                   y="value",
                   orientation="v",
