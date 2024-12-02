@@ -143,8 +143,8 @@ fig_date = px.line(df_selection,
                   color_discrete_map={
                 "Отрицательный": "red",
                 "Положительный": "green",},
-                  color="рейтинг",
-                  template="plotly_white",
+                  # color="рейтинг",
+                  # template="plotly_white",
                   )
 
 
