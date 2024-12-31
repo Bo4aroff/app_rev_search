@@ -4,7 +4,7 @@ import uuid
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import base64
+import pybase64
 from io import StringIO, BytesIO
 
 def generate_excel_download_link(df_2):
@@ -12,7 +12,7 @@ def generate_excel_download_link(df_2):
     towrite = BytesIO()
     df_selection.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
-    b64 = base64.b64encode(towrite.read()).decode()
+    b64 = pybase64.b64encode(towrite.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="data_download.xlsx">Download Excel File</a>'
     return st.markdown(href, unsafe_allow_html=True)
 
