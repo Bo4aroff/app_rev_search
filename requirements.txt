@@ -1,7 +1,7 @@
 pandas
-openpyxl==3.0.10
-app-store-scraper==0.3.5
-google-play-scraper==1.2.2
-plotly-express==0.4.1
+openpyxl
+app-store-scraper
+google-play-scraper
+plotly-express
 numpy
-uuid==1.30
+uuid
