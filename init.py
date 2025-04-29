@@ -33,7 +33,7 @@ g_df2.insert(loc=0, column='source', value='Google Play')
 g_df2.insert(loc=3, column='review_title', value=None)
 
 
-a_reviews = AppStore('ru', 'storemed', '6736902949')
+a_reviews = AppStore('ru', 'storemed-забота-о-здоровье', '6736902949')
 a_reviews.review()
 
 
