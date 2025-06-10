@@ -40,7 +40,7 @@ a_reviews.review()
 a_df = pd.DataFrame(np.array(a_reviews.reviews), columns=['review'])
 a_df2_ = a_df.join(pd.DataFrame(a_df.pop('review').tolist()))
 
-# a_df2_.drop(columns={'isEdited'}, inplace = True)
+a_df2_.drop(columns={'isEdited'}, inplace = True)
 a_df2_.insert(loc=0, column='source', value='App Store')
 a_df2_['developer_response_date'] = None
 a_df2_['thumbs_up'] = None
